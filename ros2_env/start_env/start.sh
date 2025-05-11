@@ -36,7 +36,6 @@ mkdir -p "$ROS2_WS_FOLDER"
 # Run the ROS Humble container with the correct platform
 docker run -it \
     --platform linux/amd64 \
-    --user "$(id -u):$(id -g)" \
     --env="DISPLAY=novnc:0.0" \
     --env="QT_X11_NO_MITSHM=1" \
     --net=host \
