@@ -1,18 +1,41 @@
 #!/bin/bash
 
-# Check if the container is already running
-running=$(docker ps --filter "name=novnc" --format "{{.Names}}")
+# Configuration
+ROS_CONTAINER_NAME="ros_humble_container"
+NOVNC_CONTAINER_NAME="ros_novnc"
+VNC_PASSWORD="password"
+DISPLAY_SIZE="1920x1080"
+PLATFORM="linux/arm64"  # Changed for Apple Silicon
 
-if [ "$running" == "novnc" ]; then
-    echo "The container 'novnc' is already running."
-    exit 1
+# Ensure ROS container is running
+if ! docker ps --format '{{.Names}}' | grep -q "^${ROS_CONTAINER_NAME}$"; then
+    echo "Starting ROS container..."
+    docker run -d --rm \
+        --platform ${PLATFORM} \
+        --name ${ROS_CONTAINER_NAME} \
+        -v $(pwd)/../data:/home/ros/data \
+        -v $(pwd)/../ros2_ws:/home/ros/ros2_ws \
+        lorenzo195815/ros:humble-desktop \
+        sleep infinity
 fi
 
-# Run the container
-docker run -d --rm --net=ros \
-   --env="DISPLAY_WIDTH=3000" --env="DISPLAY_HEIGHT=1800" --env="RUN_XTERM=no" \
-   --name=novnc -p=8080:8080 \
-   theasp/novnc:latest
+# Wait for container to be fully up
+sleep 2
 
-echo "The container 'novnc' has been started."
-exit 0
+# Start VNC server
+echo "Setting up VNC..."
+docker exec ${ROS_CONTAINER_NAME} bash -c "\
+    mkdir -p ~/.vnc && \
+    echo '${VNC_PASSWORD}' | vncpasswd -f > ~/.vnc/passwd && \
+    chmod 600 ~/.vnc/passwd && \
+    vncserver :1 -geometry ${DISPLAY_SIZE} -depth 24 && \
+    websockify --web /usr/share/novnc/ 6080 localhost:5901"
+
+# Start noVNC
+echo "Starting noVNC..."
+docker run -d --rm \
+    --name ${NOVNC_CONTAINER_NAME} \
+    --network container:${ROS_CONTAINER_NAME} \
+    -e DISPLAY_WIDTH=${DISPLAY_SIZE%x*} \
+    -e DISPLAY_HEIGHT=${DISPLAY_SIZE#*x} \
+    theasp/novnc

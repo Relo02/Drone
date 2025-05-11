@@ -1,48 +1,36 @@
 #!/bin/bash
 
-# Specify the container name and image
 CONTAINER_NAME="ros_humble_container"
-IMAGE_NAME="osrf/ros:humble-desktop"
+IMAGE_NAME="lorenzo195815/ros:humble-desktop"
+VNC_PASSWORD="password"  # Change if needed
+DISPLAY_SIZE="1920x1080"
 
-# Pull the latest ROS Humble image for the correct platform
-echo "Pulling the latest ROS Humble image: $IMAGE_NAME..."
-docker pull --platform linux/amd64 $IMAGE_NAME
-
-# Check if the container exists
-if docker ps -a --format "{{.Names}}" | grep -q "^$CONTAINER_NAME$"; then
-    echo "Container $CONTAINER_NAME exists."
-
-    # Check if the container is running
-    if [ "$(docker inspect -f "{{.State.Running}}" $CONTAINER_NAME 2>/dev/null)" == "true" ]; then
-        echo "Container $CONTAINER_NAME is running. Stopping it now..."
-        docker stop $CONTAINER_NAME
-        docker rm $CONTAINER_NAME
-    else
-        echo "Container $CONTAINER_NAME is not running."
-        docker rm $CONTAINER_NAME
-    fi
-else
-    echo "Container $CONTAINER_NAME does not exist."
+# Clean up existing container
+if docker ps -a --format "{{.Names}}" | grep -q "^${CONTAINER_NAME}$"; then
+    echo "Removing existing container ${CONTAINER_NAME}..."
+    docker stop ${CONTAINER_NAME} >/dev/null 2>&1 || true
+    docker rm ${CONTAINER_NAME} >/dev/null 2>&1 || true
 fi
 
-# Ensure the local 'data' and 'ros2_ws' folders exist
-PWD_DIR=$(pwd)
-DATA_FOLDER="$PWD_DIR/../data"
-ROS2_WS_FOLDER="$PWD_DIR/../ros2_ws"
+# Create folders
+mkdir -p ../data ../ros2_ws
 
-mkdir -p "$DATA_FOLDER"
-mkdir -p "$ROS2_WS_FOLDER"
-
-# Run the ROS Humble container with the correct platform
+# Run with VNC
 docker run -it \
     --platform linux/amd64 \
-    --env="DISPLAY=novnc:0.0" \
-    --env="QT_X11_NO_MITSHM=1" \
-    --net=host \
-    --rm \
-    --volume="$DATA_FOLDER:/home/ros/data" \
-    --volume="$ROS2_WS_FOLDER:/home/ros/ros2_ws" \
+    -p 6080:6080 \
+    -p 5901:5901 \
+    --env="DISPLAY=:1" \
+    --env="VNC_PASSWORD=${VNC_PASSWORD}" \
+    --volume="$PWD/../data:/home/ros/data" \
+    --volume="$PWD/../ros2_ws:/home/ros/ros2_ws" \
     --name "$CONTAINER_NAME" \
-    -w /home/ros \
+    --workdir /home/ros \
     "$IMAGE_NAME" \
-    bash
+    bash -c "\
+        mkdir -p ~/.vnc && \
+        echo '$VNC_PASSWORD' | vncpasswd -f > ~/.vnc/passwd && \
+        chmod 600 ~/.vnc/passwd && \
+        vncserver :1 -geometry $DISPLAY_SIZE -depth 24 && \
+        websockify --web /usr/share/novnc/ 6080 localhost:5901 && \
+        bash"
