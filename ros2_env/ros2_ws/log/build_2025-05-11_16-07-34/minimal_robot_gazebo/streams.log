@@ -1,0 +1,96 @@
+[0.040s] Invoking command in '/home/ros/ros2_ws/build/minimal_robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ros/ros2_ws/build/minimal_robot_gazebo -- -j8 -l8
+[0.171s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.457s] -- Found gazebo_ros: 3.9.0 (/opt/ros/humble/share/gazebo_ros/cmake)
+[0.484s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.484s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.491s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.497s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.502s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.527s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.528s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.660s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.752s] -- Found DART: /usr/include (Required is at least version "6.6") found components: dart 
+[0.802s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") 
+[0.804s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.807s] -- Searching for dependencies of ignition-math6
+[0.808s] -- Looking for OGRE...
+[0.822s] -- Found Ogre Ghadamon (1.9.0)
+[0.822s] -- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so
+[0.829s] -- Looking for OGRE_Paging...
+[0.829s] -- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so
+[0.829s] -- Looking for OGRE_Terrain...
+[0.829s] -- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+[0.830s] -- Looking for OGRE_Property...
+[0.830s] -- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so
+[0.830s] -- Looking for OGRE_RTShaderSystem...
+[0.830s] -- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so
+[0.830s] -- Looking for OGRE_Volume...
+[0.831s] -- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so
+[0.831s] -- Looking for OGRE_Overlay...
+[0.831s] -- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so
+[0.950s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.950s] -- Looking for ignition-transport8 -- found version 8.2.1
+[0.950s] -- Searching for dependencies of ignition-transport8
+[0.979s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") 
+[0.987s] -- Config-file not installed for ZeroMQ -- checking for pkg-config
+[1.000s] -- Checking for module 'libzmq >= 4'
+[1.077s] --   Found libzmq , version 4.3.4
+[1.295s] -- Checking for module 'uuid'
+[1.370s] --   Found uuid, version 2.37.2
+[1.567s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[1.567s] -- Searching for dependencies of ignition-msgs5
+[1.596s] -- Looking for ignition-math6 -- found version 6.15.1
+[1.609s] -- Checking for module 'tinyxml2'
+[1.706s] --   Found tinyxml2, version 9.0.0
+[1.917s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[1.917s] -- Looking for ignition-common3 -- found version 3.14.0
+[1.917s] -- Searching for dependencies of ignition-common3
+[1.918s] -- Looking for dlfcn.h - found
+[1.918s] -- Looking for libdl - found
+[1.935s] -- Searching for <ignition-common3> component [graphics]
+[1.936s] -- Looking for ignition-common3-graphics -- found version 3.14.0
+[1.936s] -- Searching for dependencies of ignition-common3-graphics
+[1.936s] -- Looking for ignition-math6 -- found version 6.15.1
+[1.937s] -- Looking for ignition-fuel_tools4 -- found version 4.4.0
+[1.937s] -- Searching for dependencies of ignition-fuel_tools4
+[2.022s] -- Checking for module 'jsoncpp'
+[2.097s] --   Found jsoncpp, version 1.9.5
+[2.307s] -- Checking for module 'libzip'
+[2.383s] --   Found libzip, version 1.7.3
+[2.581s] -- Looking for ignition-common3 -- found version 3.14.0
+[2.582s] -- Looking for ignition-math6 -- found version 6.15.1
+[2.582s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[2.583s] -- Gazebo version: 11.10
+[2.585s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.713s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.715s] -- Added test 'lint_cmake' to check CMake code style
+[2.716s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.723s] -- Added test 'xmllint' to check XML markup files
+[2.728s] -- Configuring done
+[2.763s] -- Generating done
+[2.781s] -- Build files have been written to: /home/ros/ros2_ws/build/minimal_robot_gazebo
+[2.870s] Invoked command in '/home/ros/ros2_ws/build/minimal_robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ros/ros2_ws/build/minimal_robot_gazebo -- -j8 -l8
+[2.907s] Invoking command in '/home/ros/ros2_ws/build/minimal_robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ros/ros2_ws/build/minimal_robot_gazebo
+[2.948s] -- Install configuration: ""
+[2.948s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo//launch
+[2.949s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo//launch/spawn_robot.launch.py
+[2.952s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/urdf
+[2.952s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/urdf/robot.urdf
+[2.952s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/worlds
+[2.953s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/worlds/my_world.world
+[2.955s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/ament_index/resource_index/package_run_dependencies/minimal_robot_gazebo
+[2.955s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/ament_index/resource_index/parent_prefix_path/minimal_robot_gazebo
+[2.955s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/environment/ament_prefix_path.sh
+[2.956s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/environment/ament_prefix_path.dsv
+[2.957s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/environment/path.sh
+[2.957s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/environment/path.dsv
+[2.959s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/local_setup.bash
+[2.959s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/local_setup.sh
+[2.960s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/local_setup.zsh
+[2.960s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/local_setup.dsv
+[2.961s] -- Installing: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/package.dsv
+[2.962s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/ament_index/resource_index/packages/minimal_robot_gazebo
+[2.963s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/cmake/minimal_robot_gazeboConfig.cmake
+[2.963s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/cmake/minimal_robot_gazeboConfig-version.cmake
+[2.963s] -- Up-to-date: /home/ros/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/package.xml
+[2.969s] Invoked command in '/home/ros/ros2_ws/build/minimal_robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ros/ros2_ws/build/minimal_robot_gazebo
