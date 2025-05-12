@@ -1,34 +1,47 @@
 #!/bin/bash
 
-CONTAINER_NAME="ros_humble_container"
-IMAGE_NAME="lorenzo195815/ros:humble-desktop"
-VNC_PASSWORD="password"
-DISPLAY_SIZE="1920x1080"
+# Specify the container name and image
+CONTAINER_NAME="robotics_container"
+IMAGE_NAME="smentasti/robotics"
 
-docker rm -f ${CONTAINER_NAME} >/dev/null 2>&1 || true
-mkdir -p ../data ../ros2_ws
-xhost +local:root >/dev/null 2>&1
+# Pull the latest image
+echo "Pulling the latest image: $IMAGE_NAME..."
+docker pull $IMAGE_NAME
 
+# Check if the container exists
+if docker ps -a --format "{{.Names}}" | grep -q "^$CONTAINER_NAME$"; then
+    echo "Container $CONTAINER_NAME exists."
+
+    # Check if the container is running
+    if [ "$(docker inspect -f "{{.State.Running}}" $CONTAINER_NAME 2>/dev/null)" == "true" ]; then
+        echo "Container $CONTAINER_NAME is running. Stopping it now..."
+        docker stop $CONTAINER_NAME
+        docker rm $CONTAINER_NAME
+    else
+        echo "Container $CONTAINER_NAME is not running."
+        docker rm $CONTAINER_NAME
+    fi
+else
+    echo "Container $CONTAINER_NAME does not exist."
+fi
+
+# Ensure the local 'data' and 'ros2_ws' folders exist
+PWD_DIR=$(pwd)
+DATA_FOLDER="$PWD_DIR/../data"
+ROS2_WS_FOLDER="$PWD_DIR/../ros2_ws"
+
+mkdir -p "$DATA_FOLDER"
+mkdir -p "$ROS2_WS_FOLDER"
+
+# Run the container
 docker run -it \
-    --platform linux/amd64 \
-    -p 8080:8080 \
-    -p 5902:5902 \
-    -p 8765:8765 \
-    --env="DISPLAY=:2" \
-    --env="VNC_PASSWORD=${VNC_PASSWORD}" \
-    --volume="$PWD/../data:/home/ros/data" \
-    --volume="$PWD/../ros2_ws:/home/ros/ros2_ws" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-    --cap-add=SYS_PTRACE \
-    --security-opt seccomp=unconfined \
+    --user robotics \
+    --env="DISPLAY=novnc:0.0" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --net=ros \
+    --rm \
+    --volume="$DATA_FOLDER:/home/robotics/data" \
+    --volume="$ROS2_WS_FOLDER:/home/robotics/ros2_ws" \
     --name "$CONTAINER_NAME" \
-    "$IMAGE_NAME" \
-    bash -c "\
-        rm -rf /tmp/.X11-unix/X* && \
-        mkdir -p ~/.vnc && \
-        echo '${VNC_PASSWORD}' | vncpasswd -f > ~/.vnc/passwd && \
-        chmod 600 ~/.vnc/passwd && \
-        vncserver :2 -geometry ${DISPLAY_SIZE} -depth 24 && \
-        export DISPLAY=:2 && \
-        /usr/share/novnc/utils/launch.sh --listen 8080 --vnc localhost:5902 & \
-        bash"
+    -w /home/robotics \
+    "$IMAGE_NAME"
