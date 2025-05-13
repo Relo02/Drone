@@ -19,6 +19,27 @@ RUN apt-get update && \
     apt-get install -y ros-humble-turtlesim && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Gazebo explicitly
+RUN apt-get update && \
+    apt-get install -y \
+        ros-humble-ros-ign \
+        ros-humble-ros-ign-gazebo && \
+    rm -rf /var/lib/apt/lists/*
+
+# Source ROS and Gazebo environments in the shell
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
+    echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc && \
+    echo "source /home/robotics/ros2_ws/install/setup.bash" >> ~/.bashrc
+
+# Install colcon and development tools
+RUN apt-get update && \
+    apt-get install -y \
+        python3-colcon-common-extensions \
+        python3-vcstool \
+        python3-pip && \
+    python3 -m pip install -U colcon-ros-bundle && \
+    rm -rf /var/lib/apt/lists/*
+
 # Create a non-root user named 'robotics' with home directory
 RUN useradd -m -s /bin/bash robotics && \
     mkdir -p /home/robotics/data && \

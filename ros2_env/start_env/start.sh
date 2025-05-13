@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Specify the container name and image
-CONTAINER_NAME="robotics_container"
-IMAGE_NAME="smentasti/robotics"
+CONTAINER_NAME="Falco_container"
+IMAGE_NAME="lorenzo195815/ros2_env:latest"
 
 # Pull the latest image
 echo "Pulling the latest image: $IMAGE_NAME..."

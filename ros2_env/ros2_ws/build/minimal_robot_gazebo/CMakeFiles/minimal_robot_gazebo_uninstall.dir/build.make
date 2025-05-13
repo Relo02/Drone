@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ros/ros2_ws/src/minimal_robot_gazebo
+CMAKE_SOURCE_DIR = /home/robotics/ros2_ws/src/minimal_robot_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ros/ros2_ws/build/minimal_robot_gazebo
+CMAKE_BINARY_DIR = /home/robotics/ros2_ws/build/minimal_robot_gazebo
 
 # Utility rule file for minimal_robot_gazebo_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/minimal_robot_gazebo_uninstall.dir/compiler_depend.make
 include CMakeFiles/minimal_robot_gazebo_uninstall.dir/progress.make
 
 CMakeFiles/minimal_robot_gazebo_uninstall:
-	/usr/bin/cmake -P /home/ros/ros2_ws/build/minimal_robot_gazebo/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/robotics/ros2_ws/build/minimal_robot_gazebo/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 minimal_robot_gazebo_uninstall: CMakeFiles/minimal_robot_gazebo_uninstall
 minimal_robot_gazebo_uninstall: CMakeFiles/minimal_robot_gazebo_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/minimal_robot_gazebo_uninstall.dir/clean:
 .PHONY : CMakeFiles/minimal_robot_gazebo_uninstall.dir/clean
 
 CMakeFiles/minimal_robot_gazebo_uninstall.dir/depend:
-	cd /home/ros/ros2_ws/build/minimal_robot_gazebo && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ros/ros2_ws/src/minimal_robot_gazebo /home/ros/ros2_ws/src/minimal_robot_gazebo /home/ros/ros2_ws/build/minimal_robot_gazebo /home/ros/ros2_ws/build/minimal_robot_gazebo /home/ros/ros2_ws/build/minimal_robot_gazebo/CMakeFiles/minimal_robot_gazebo_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robotics/ros2_ws/build/minimal_robot_gazebo && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robotics/ros2_ws/src/minimal_robot_gazebo /home/robotics/ros2_ws/src/minimal_robot_gazebo /home/robotics/ros2_ws/build/minimal_robot_gazebo /home/robotics/ros2_ws/build/minimal_robot_gazebo /home/robotics/ros2_ws/build/minimal_robot_gazebo/CMakeFiles/minimal_robot_gazebo_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/minimal_robot_gazebo_uninstall.dir/depend
 

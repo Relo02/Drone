@@ -1,26 +1,26 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch_ros.actions import Node
 from launch.actions import ExecuteProcess
+from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_share = get_package_share_directory('minimal_robot_gazebo')
     urdf_file = os.path.join(pkg_share, 'urdf', 'robot.urdf')
 
     return LaunchDescription([
-        # Start Gazebo first
+        # Launch Ignition Gazebo (Gazebo Fortress or newer)
         ExecuteProcess(
-            cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so'],
+            cmd=['ign', 'gazebo', '-r', '--verbose'],
             output='screen'
         ),
 
-        # Spawn the robot
+        # Spawn robot using ros_ign_gazebo's 'create'
         Node(
-            package='gazebo_ros',
-            executable='spawn_entity.py',
+            package='ros_ign_gazebo',
+            executable='create',
             arguments=[
-                '-entity', 'my_robot',
+                '-name', 'my_robot',
                 '-file', urdf_file
             ],
             output='screen'
