@@ -7,35 +7,33 @@ endif()
 
 # Find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(ros_ign REQUIRED)  # This finds ros-ign packages for Ignition Gazebo
-find_package(ros_ign_gazebo REQUIRED)  # This is the ros-ign gazebo integration
+find_package(ros_ign REQUIRED)           # Ignition integration
+find_package(ros_ign_gazebo REQUIRED)    # ros_ign gazebo bridge
 
-# Install the launch folder
-install(DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}/
+# Install your launch files into share/<pkg>/launch
+install(DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}/launch
 )
 
-# Install the URDF folder
-install(
-  DIRECTORY urdf
+# Install your URDF (xacro) files into share/<pkg>/urdf
+install(DIRECTORY urdf/
   DESTINATION share/${PROJECT_NAME}/urdf
 )
 
-# Install the worlds folder
-install(
-  DIRECTORY worlds
-  DESTINATION share/${PROJECT_NAME}
+# Install your world files into share/<pkg>/worlds
+install(DIRECTORY worlds/
+  DESTINATION share/${PROJECT_NAME}/worlds
 )
+
+# (Optional) If you have mesh models, you could also do:
+# install(DIRECTORY models/
+#   DESTINATION share/${PROJECT_NAME}/models
+# )
 
 # For testing
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  # The following line skips the linter which checks for copyrights
-  # Comment the line when a copyright and license is added to all source files
   set(ament_cmake_copyright_FOUND TRUE)
-  # The following line skips cpplint (only works in a git repo)
-  # Comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()

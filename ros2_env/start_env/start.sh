@@ -27,6 +27,7 @@ fi
 
 # Ensure the local 'data' and 'ros2_ws' folders exist
 PWD_DIR=$(pwd)
+echo "pw: $PWD_DIR "
 DATA_FOLDER="$PWD_DIR/../data"
 ROS2_WS_FOLDER="$PWD_DIR/../ros2_ws"
 

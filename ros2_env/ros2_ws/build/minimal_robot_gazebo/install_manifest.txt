@@ -1,5 +1,5 @@
-/home/robotics/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo//launch/spawn_robot.launch.py
-/home/robotics/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/urdf/urdf/robot.urdf
+/home/robotics/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/launch/spawn_robot.launch.py
+/home/robotics/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/urdf/robot.urdf.xacro
 /home/robotics/ros2_ws/install/minimal_robot_gazebo/share/minimal_robot_gazebo/worlds/my_world.world
 /home/robotics/ros2_ws/install/minimal_robot_gazebo/share/ament_index/resource_index/package_run_dependencies/minimal_robot_gazebo
 /home/robotics/ros2_ws/install/minimal_robot_gazebo/share/ament_index/resource_index/parent_prefix_path/minimal_robot_gazebo

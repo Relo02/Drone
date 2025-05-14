@@ -43,15 +43,15 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo/" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo/launch" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/launch/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo/urdf" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/urdf")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo/urdf" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/urdf/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/worlds")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/minimal_robot_gazebo/worlds" TYPE DIRECTORY FILES "/home/robotics/ros2_ws/src/minimal_robot_gazebo/worlds/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
